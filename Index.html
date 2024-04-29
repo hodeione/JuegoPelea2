@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defensa de Células</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="#inicio" onclick="scrollToSection('inicio')">Inicio</a></li>
+            <li><a href="#acerca-de" onclick="scrollToSection('acerca-de')" >Acerca de</a></li>
+            <li><a href="#contacto" onclick="scrollToSection('contacto')">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+<div id="game-container">
+    <div id="game-board"></div>
+    <div id="ui">
+        <div id="onboarding" class="hidden">
+            <h2>Bienvenido a Defensa del Baño</h2>
+            <p>Aquí va la descripción del juego y cómo jugar:</p>
+            <button onclick="startGame()">Comenzar</button>
+        </div>
+    </div>
+
+    <video autoplay loop muted class="video-bg">
+        <source src="Inside%20the%20Living%20Cell.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div id="inicio" class="section">
+        <h1>Inicio</h1>
+        <p>Bienvenido a la página de inicio de Defensa de Células. ¡Prepárate para sumergirte en la emocionante aventura de defender tu territorio contra las células invasoras!</p>
+        <p>Comienza jugando ahora mismo haciendo clic en el botón de "Comenzar" más arriba.</p>
+    </div>
+
+    <div id="acerca-de" class="section">
+        <h1>Acerca de</h1>
+        <p>Defensa de Células es un juego de defensa de torres en el que tu objetivo es proteger tu territorio de las células invasoras. Desarrollado con tecnologías web como HTML, CSS y JavaScript, este juego combina diversión y educación sobre el funcionamiento de las células.</p>
+        <p>¡Esperamos que disfrutes jugando y aprendiendo!</p>
+    </div>
+
+    <div id="contacto" class="section">
+        <h1>Contacto</h1>
+        <p>Para cualquier pregunta, comentario o sugerencia, no dudes en ponerte en contacto con nosotros. Estamos aquí para ayudarte y mejorar tu experiencia con Defensa de Células.</p>
+        <p>Puedes contactarnos a través del siguiente correo electrónico: info@defensadecelulas.com</p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2021 Defensa del Baño. Todos los derechos reservados.</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

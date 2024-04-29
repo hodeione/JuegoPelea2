@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pelea celulas</title>
+    <link rel="stylesheet" href="cssJ.css">
+</head>
+
+<body>
+<!-- Reproductor de música de fondo -->
+<audio autoplay id="background-music" >
+    <source src="musica%20para%20la%20accion%20pulso%20pulse_r3pnsuoNJ3I.mp3" type="audio/mpeg">
+    Tu navegador no soporta la reproducción de audio.
+</audio>
+<!-- Controlador del tiempo-->
+<div id="timer">Tiempo: 00:00</div>
+<!-- Contador de puntos -->
+<div id="points-counter">Puntos: 0</div>
+<!-- Mejoras -->
+<div id="improvements">
+    <div id="left-improvements">
+        <button id="left-improvement1" class="improvement" onclick="buyPointsPerSecond()">+1 PTS/s (50 PT)</button>
+        <button id="left-improvement2" class="improvement" onclick="buyDiscount()">-10% Minions (40 PT)</button>
+    </div>
+    <div id="right-improvements">
+        <button id="right-improvement1" class="improvement" >Aumento de velocidad</button>
+        <button id="right-improvement2" class="improvement" onclick="openSettings()">Settings</button>
+    </div>
+    <div id="settings-dialog" class="settings-dialog">
+        <h3>Ajustes</h3>
+        <!-- Contenido de ajustes aquí -->
+        <button onclick="openVolumeControl()">Volumen</button>
+        <button onclick="closeSettings()">Continuar</button>
+        <button onclick="exitToIndex()">Salir</button>  <!-- Botón para cerrar el cuadro de diálogo -->
+    </div>
+</div>
+
+<!-- Imagen del enemigo -->
+<img id="enemy-img" src="../JuegoPelea/Enemigo.png" alt="Enemigo" class="enemy-image">
+<!-- Barra de vida del enemigo -->
+<img id="enemy-health" src="../JuegoPelea/VidaEntera.png" alt="Vida del enemigo" class="health-bar">
+
+<!-- Contenedor principal del juego -->
+<div id="game-container">
+    <!-- Contenido del juego -->
+</div>
+
+<!-- Contenedor de onboarding -->
+<div id="onboarding-container" class="hidden">
+    <!-- Cuadro de texto de onboarding -->
+    <div id="onboarding-text" class="onboarding-text"></div>
+    <!-- Botón para avanzar -->
+    <button id="next-button">Siguiente</button>
+</div>
+
+<!-- Imagen del jugador -->
+<img id="player-img" src="../JuegoPelea/Herow.png" alt="Jugador" class="player-image">
+<!-- Barra de vida del jugador -->
+<img id="player-health" src="../JuegoPelea/VidaEntera.png" alt="Vida del jugador" class="health-bar">
+
+<!-- Cuadrados de esbirros -->
+<div id="minions-container">
+    <button class="minion-button" data-price="10" onclick="moveMinion('10.png')">Esbirro 1</button>
+    <button class="minion-button" data-price="50" onclick="moveMinion('50.png')">Esbirro 2</button>
+    <button class="minion-button" data-price="100" onclick="moveMinion('100.png')">Esbirro 3</button>
+    <button class="minion-button" data-price="500" onclick="moveMinion('500.png')">Esbirro 4</button>
+    <button class="minion-button" data-price="1000" onclick="moveMinion('1000.png')">Esbirro 5</button>
+</div>
+
+<script src="script.js"></script>
+
+
+
+</body>
+</html>

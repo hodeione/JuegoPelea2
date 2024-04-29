@@ -1,0 +1,327 @@
+body {
+    background-image: url('4ff9324a1e64b4f9ea4864be3e444a04.jpg'); /* Ruta a la imagen de fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center center; /* Centra la imagen */
+    margin: 0; /* Elimina el margen predeterminado del cuerpo */
+    padding: 0; /* Elimina el relleno predeterminado del cuerpo */
+    height: 100vh; /* Establece la altura del cuerpo al 100% del viewport height */
+    overflow: hidden; /* Evita que el contenido desborde del cuerpo */
+    position: relative;
+}
+
+#enemy-img {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: -1; /* Coloca la imagen detrás del contenido */
+}
+#enemy-health {
+    position: absolute;
+    right: 0;
+    transform: translateY(-150%); /* Coloca la barra de vida encima del enemigo */
+    max-width: 30%; /* Tamaño máximo de la barra de vida */
+    height: auto; /* Permite que la altura de la barra de vida se ajuste automáticamente */
+    z-index: 2; /* Coloca la barra de vida encima de la imagen del enemigo */
+}
+
+#player-img{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: -1; /* Coloca la imagen detrás del contenido */
+}
+/* Estilo para la barra de vida del jugador */
+#player-health {
+    position: absolute;
+
+    left: 0;
+    transform: translateY(-150%); /* Coloca la barra de vida encima del jugador */
+    max-width: 30%; /* Tamaño máximo de la barra de vida */
+    height: auto; /* Permite que la altura de la barra de vida se ajuste automáticamente */
+    z-index: 2; /* Coloca la barra de vida encima de la imagen del jugador */
+}
+
+/* Estilo para el temporizador */
+#timer {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+
+/* Estilos para los cuadrados de esbirros */
+#minions-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    position: fixed;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    padding: 20px 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+}
+
+
+/* Estilos generales */
+#game-container {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Ajusta la altura según sea necesario */
+
+}
+
+.minion-move {
+    position: absolute;
+    top: 50%; /* Centra verticalmente la imagen */
+    transform: translate(-50%, -50%); /* Centra horizontalmente la imagen */
+    transition: left 2s linear; /* Duración y efecto de la animación */
+}
+
+.minion {
+    text-align: center;
+    flex: 1; /* Distribuye el espacio disponible entre los elementos */
+    max-width: 20%; /* Máximo ancho del cuadro de esbirro */
+    padding: 10px; /* Espacio interno */
+}
+
+.minion img {
+    max-width: 100%; /* La imagen ocupa todo el ancho del contenedor */
+    height: 15%; /* Altura automática */
+}
+
+.price {
+    color: white; /* Color del texto */
+    font-size: 14px; /* Tamaño de la fuente */
+}
+
+#points-counter {
+    font-size: 20px; /* Tamaño de la fuente */
+    color: white; /* Color del texto */
+    background-color: black; /* Color de fondo */
+    padding: 10px; /* Espacio interno */
+    border-radius: 5px; /* Borde redondeado */
+}
+
+/*mejoras*/
+.improvement {
+    background-color: #3498db; /* Color de fondo */
+    border: none; /* Borde */
+    border-radius: 5px; /* Borde redondeado */
+    color: white; /* Color del texto */
+    font-family: Arial, sans-serif; /* Fuente del texto */
+    font-size: 16px; /* Tamaño del texto */
+    padding: 10px 20px; /* Espacio interno */
+    margin: 10px; /* Margen entre botones */
+    cursor: pointer; /* Cursor al pasar */
+    transition: background-color 0.3s ease; /* Transición de color */
+    width: auto; /* Ancho automático */
+    height: auto; /* Alto automático */
+    display: inline-block; /* Mostrar como bloque en línea */
+}
+
+
+/* Estilos para los elementos del juego */
+#improvements {
+    display: flex; /* Usa un layout flexbox */
+    align-items: center; /* Centra los elementos verticalmente */
+    justify-content: space-between; /* Distribuye los elementos uniformemente */
+    margin-top: 10px; /* Espacio superior para separar del contador de puntos */
+    margin-bottom: 20px;
+}
+
+#left-improvements,
+#right-improvements {
+    display: flex; /* Usa un layout flexbox */
+    margin-right: 30%;
+    margin-left: 30%;
+
+}
+
+#left-improvements {
+    margin-right: 0; /* Espacio entre los cuadrados de mejora a la izquierda */
+}
+
+#right-improvements {
+    margin-left: 10px; /* Espacio entre los cuadrados de mejora a la derecha */
+}
+
+#points-counter {
+    font-size: 20px; /* Tamaño de la fuente del contador de puntos */
+    color: white; /* Color del texto del contador de puntos */
+    background-color: black; /* Color de fondo del contador de puntos */
+    padding: 10px; /* Espacio interno del contador de puntos */
+    border-radius: 5px; /* Borde redondeado del contador de puntos */
+    margin-bottom: 10px; /* Espacio inferior para separar de los cuadrados de mejora */
+}
+
+.settings-dialog {
+    display: none; /* Por defecto, ocultar el cuadro de diálogo */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid black;
+    z-index: 999; /* Asegura que esté por encima de otros elementos */
+}
+
+.settings-dialog.show {
+    display: block; /* Mostrar el cuadro de diálogo cuando tenga la clase "show" */
+}
+
+
+
+/* Estilos para la bola roja */
+.red-ball {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    position: absolute;
+    top: 50%; /* Inicialmente centrada verticalmente */
+    left: 100%; /* Inicialmente fuera de la pantalla */
+    border-radius: 50%; /* Forma redonda */
+    z-index: 999; /* Asegura que esté por encima de otros elementos */
+    animation: moveRight 10s linear; /* Animación para mover la bola hacia la izquierda */
+}
+
+/* Animación para mover la bola hacia la izquierda */
+@keyframes moveRight {
+    0% { left: 100%; width: 10px; height: 10px; } /* Inicio: posición y tamaño inicial */
+    100% { left: -100px; width: 100px; height: 100px; } /* Final: posición y tamaño cuando impacta */
+}
+
+
+/* Estilos para el contenedor de onboarding */
+#onboarding-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+/* Estilos para ocultar el contenedor de onboarding inicialmente */
+.hidden {
+    display: none;
+}
+
+
+/* Estilos específicos para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+    body {
+        background-size: contain; /* Ajusta la imagen para cubrir todo el fondo */
+    }
+    #enemy-img {
+        max-width: 80%; /* Tamaño máximo de la imagen para dispositivos móviles */
+        height: 170px;
+        width: 170px;
+    }
+    #enemy-health {
+        top: 45%;
+    }
+    #player-img{
+        max-width: 80%; /* Tamaño máximo de la imagen para dispositivos móviles */
+        height: 170px;
+        width: 170px;
+    }
+    #player-health {
+        top: 45%;
+    }
+    .minion {
+        max-width: 30%; /* Máximo ancho del cuadro de esbirro para dispositivos móviles */
+    }
+
+    #left-improvements,
+    #right-improvements {
+        display: flex; /* Usa un layout flexbox */
+        margin-right: 2%;
+        margin-left: 2%;
+
+    }
+}
+
+
+
+/* Estilos específicos para tabletas */
+@media only screen and (min-width: 601px) and (max-width: 1047px) {
+    body {
+        background-size: contain; /* Ajusta la imagen para cubrir todo el fondo */
+    }
+    #enemy-img {
+        max-width: 60%; /* Tamaño máximo de la imagen para tabletas */
+        height: 170px;
+        width: 170px;
+    }
+    #enemy-health {
+        top: 40%;
+    }
+    #player-img{
+        max-width: 60%; /* Tamaño máximo de la imagen para tabletas */
+        height: 170px;
+        width: 170px;
+    }
+    #player-health {
+        top:  40%;
+    }
+    .minion {
+        max-width: 30%; /* Máximo ancho del cuadro de esbirro para tabletas */
+    }
+    #left-improvements,
+    #right-improvements {
+        display: flex; /* Usa un layout flexbox */
+        margin-right: 10%;
+        margin-left: 10%;
+
+    }
+}
+
+
+
+/* Estilos específicos para escritorios */
+@media only screen and (min-width: 1048px) {
+    body {
+        background-size: contain; /* Ajusta la imagen para cubrir todo el fondo */
+    }
+    #enemy-img {
+        max-width: 40%; /* Tamaño máximo de la imagen para escritorios */
+        height: 350px;
+        width: 350px;
+    }
+    #enemy-health {
+        top: 20%;
+    }
+    #player-img{
+        max-width: 40%; /* Tamaño máximo de la imagen para escritorios */
+        height: 350px;
+        width: 350px;
+    }
+    #player-health {
+        top: 20%;
+    }
+    .minion {
+        max-width: 20%; /* Máximo ancho del cuadro de esbirro para escritorios */
+    }
+    #left-improvements,
+    #right-improvements {
+        display: flex; /* Usa un layout flexbox */
+        margin-right: 10%;
+        margin-left: 10%;
+
+    }
+
+}
